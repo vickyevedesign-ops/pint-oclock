@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pint O’Clock Somewhere</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Pint O’Clock Somewhere</h1>
+    <p>Click the pint to see where it’s 5 PM and the top bars!</p>
+  </header>
+
+  <main>
+    <div id="pint-container" aria-label="Pint glass with beer" role="button" tabindex="0">
+      <svg id="pint" viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Glass outline -->
+        <path d="M60 20 L140 20 L120 380 L80 380 Z" fill="none" stroke="#555" stroke-width="4" rx="15" ry="15"/>
+        <!-- Beer fill mask -->
+        <clipPath id="beerMask">
+          <rect id="beer-rect" x="80" y="380" width="40" height="0" />
+        </clipPath>
+        <!-- Beer -->
+        <rect x="80" y="20" width="40" height="360" fill="url(#beerGradient)" clip-path="url(#beerMask)" />
+        <!-- Foam -->
+        <ellipse cx="100" cy="20" rx="30" ry="15" fill="white" opacity="0" id="foam" />
+        <defs>
+          <linearGradient id="beerGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#ffd966" />
+            <stop offset="100%" stop-color="#c47a00" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <button id="pour-btn">Pour the Pint</button>
+
+    <section id="info" aria-live="polite">
+      <h2 id="city-name"></h2>
+      <div id="bars"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
